@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>City Cricket Academy | USA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --green: #0b8a3c;
+      --green-dark: #066b2c;
+      --gold: #f5b301;
+      --dark: #0a1628;
+      --light: #f4f7f5;
+      --white: #ffffff;
+      --shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--light);
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(10, 22, 40, 0.92);
+      backdrop-filter: blur(10px);
+      padding: 14px 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: 0.3s;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--white);
+      font-weight: 800;
+      font-size: 1.25rem;
+      letter-spacing: 0.5px;
+    }
+
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, var(--green), var(--gold));
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 1.3rem;
+    }
+
+    .logo span {
+      color: var(--gold);
+    }
+
+    nav ul {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    nav ul li a {
+      color: #e8f0ea;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: 0.3s;
+      position: relative;
+    }
+
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gold);
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: var(--gold);
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+
+    .btn-cta {
+      background: linear-gradient(135deg, var(--green), var(--green-dark));
+      color: var(--white);
+      padding: 11px 26px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: 0.3s;
+      box-shadow: 0 6px 18px rgba(11, 138, 60, 0.4);
+    }
+
+    .btn-cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 26px rgba(11, 138, 60, 0.6);
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      width: 26px;
+      height: 3px;
+      background: var(--white);
+      border-radius: 3px;
+      transition: 0.3s;
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, rgba(10, 22, 40, 0.94), rgba(11, 138, 60, 0.85)),
+        url('https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      padding: 130px 6% 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -150px;
+      right: -150px;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(245, 179, 1, 0.25), transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -200px;
+      left: -100px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(11, 138, 60, 0.3), transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero-container {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 60px;
+      align-items: center;
+      width: 100%;
+      max-width: 1300px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-text {
+      color: var(--white);
+      animation: fadeUp 1s ease;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(245, 179, 1, 0.15);
+      border: 1px solid rgba(245, 179, 1, 0.5);
+      color: var(--gold);
+      padding: 8px 18px;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    .badge .dot {
+      width: 8px;
+      height: 8px;
+      background: var(--gold);
+      border-radius: 50%;
+      animation: pulse 1.6s infinite;
+    }
+
+    .hero-text h1 {
+      font-size: 3.4rem;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .hero-text h1 span {
+      color: var(--gold);
+      display: inline-block;
+    }
+
+    .hero-text p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #d8e4dc;
+      max-width: 540px;
+      margin-bottom: 30px;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+
+    .stat h3 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--gold);
+    }
+
+    .stat p {
+      font-size: 0.85rem;
+      color: #c2d3c9;
+      margin: 0;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold), #e09e00);
+      color: var(--dark);
+      padding: 15px 34px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: 0.3s;
+      box-shadow: 0 10px 28px rgba(245, 179, 1, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 36px rgba(245, 179, 1, 0.6);
+    }
+
+    .btn-outline {
+      border: 2px solid rgba(255, 255, 255, 0.6);
+      color: var(--white);
+      padding: 13px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: 0.3s;
+    }
+
+    .btn-outline:hover {
+      background: var(--white);
+      color: var(--dark);
+      transform: translateY(-4px);
+    }
+
+    /* ===== FORM CARD ===== */
+    .form-card {
+      background: rgba(255, 255, 255, 0.98);
+      border-radius: 24px;
+      padding: 40px 36px;
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.35);
+      animation: fadeUp 1.2s ease;
+      position: relative;
+    }
+
+    .form-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(90deg, var(--green), var(--gold));
+      border-radius: 24px 24px 0 0;
+    }
+
+    .form-card h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      color: var(--dark);
+    }
+
+    .form-card .sub {
+      font-size: 0.88rem;
+      color: #5a6b61;
+      margin-bottom: 24px;
+    }
+
+    .form-card .sub strong {
+      color: var(--green);
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #3d4d44;
+      margin-bottom: 6px;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 13px 16px;
+      border: 2px solid #e3ebe6;
+      border-radius: 12px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.9rem;
+      background: #f9fbfa;
+      transition: 0.3s;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: var(--green);
+      background: var(--white);
+      box-shadow: 0 0 0 4px rgba(11, 138, 60, 0.12);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--green), var(--green-dark));
+      color: var(--white);
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 8px;
+      box-shadow: 0 10px 26px rgba(11, 138, 60, 0.4);
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 32px rgba(11, 138, 60, 0.55);
+    }
+
+    .form-note {
+      text-align: center;
+      font-size: 0.75rem;
+      color: #7a8a80;
+      margin-top: 14px;
+    }
+
+    .form-note span {
+      color: var(--green);
+      font-weight: 600;
+    }
+
+    /* ===== FEATURES STRIP ===== */
+    .features {
+      padding: 70px 6%;
+      background: var(--white);
+      text-align: center;
+    }
+
+    .features h2 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .features h2 span {
+      color: var(--green);
+    }
+
+    .features > p {
+      color: #5a6b61;
+      max-width: 600px;
+      margin: 0 auto 50px;
+      font-size: 1rem;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 28px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .feature-card {
+      background: var(--light);
+      border-radius: 20px;
+      padding: 36px 26px;
+      transition: 0.35s;
+      border: 2px solid transparent;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--green);
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .feature-icon {
+      width: 66px;
+      height: 66px;
+      margin: 0 auto 18px;
+      background: linear-gradient(135deg, var(--green), var(--green-dark));
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      font-size: 1.8rem;
+    }
+
+    .feature-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .feature-card p {
+      font-size: 0.88rem;
+      color: #5a6b61;
+      line-height: 1.6;
+    }
+
+    /* ===== COACH SECTION ===== */
+    .coach {
+      padding: 80px 6%;
+      background: linear-gradient(135deg, var(--dark), #12233d);
+      color: var(--white);
+    }
+
+    .coach-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .coach-img {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .coach-img img {
+      width: 100%;
+      display: block;
+      height: 480px;
+      object-fit: cover;
+      transition: 0.5s;
+    }
+
+    .coach-img:hover img {
+      transform: scale(1.05);
+    }
+
+    .coach-tag {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      background: rgba(245, 179, 1, 0.95);
+      color: var(--dark);
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+
+    .coach-text h2 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .coach-text h2 span {
+      color: var(--gold);
+    }
+
+    .coach-text p {
+      color: #c2d3c9;
+      line-height: 1.8;
+      font-size: 1rem;
+      margin-bottom: 22px;
+    }
+
+    .coach-list {
+      list-style: none;
+      margin-bottom: 30px;
+    }
+
+    .coach-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: #d8e4dc;
+    }
+
+    .coach-list li .check {
+      width: 24px;
+      height: 24px;
+      background: var(--green);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    /* ===== CTA BANNER ===== */
+    .cta-banner {
+      padding: 70px 6%;
+      background: linear-gradient(135deg, var(--green), var(--green-dark));
+      text-align: center;
+      color: var(--white);
+    }
+
+    .cta-banner h2 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .cta-banner p {
+      font-size: 1.05rem;
+      margin-bottom: 30px;
+      opacity: 0.95;
+    }
+
+    .cta-banner .btn-primary {
+      background: var(--gold);
+      color: var(--dark);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--dark);
+      color: #9fb3a6;
+      padding: 50px 6% 24px;
+    }
+
+    .footer-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-brand .logo {
+      margin-bottom: 16px;
+    }
+
+    .footer-brand p {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      max-width: 320px;
+    }
+
+    .footer-col h4 {
+      color: var(--white);
+      font-size: 1rem;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-col ul li a {
+      color: #9fb3a6;
+      text-decoration: none;
+      font-size: 0.88rem;
+      transition: 0.3s;
+    }
+
+    .footer-col ul li a:hover {
+      color: var(--gold);
+      padding-left: 5px;
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-top: 24px;
+      text-align: center;
+      font-size: 0.82rem;
+      color: #6c8074;
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+      50% {
+        opacity: 0.5;
+        transform: scale(1.3);
+      }
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .hero-text h1 {
+        font-size: 2.8rem;
+      }
+      .coach-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .coach-img img {
+        height: 400px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      nav ul,
+      .header .btn-cta {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .hero-container {
+        grid-template-columns: 1fr;
+        gap: 50px;
+      }
+
+      .hero-text h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero-text p {
+        max-width: 100%;
+      }
+
+      .form-card {
+        padding: 32px 26px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding: 12px 5%;
+      }
+
+      .hero {
+        padding: 110px 5% 50px;
+      }
+
+      .hero-text h1 {
+        font-size: 2rem;
+      }
+
+      .hero-stats {
+        gap: 24px;
+      }
+
+      .stat h3 {
+        font-size: 1.6rem;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+      }
+
+      .btn-primary,
+      .btn-outline {
+        text-align: center;
+        width: 100%;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .form-card h2 {
+        font-size: 1.35rem;
+      }
+
+      .features h2,
+      .coach-text h2,
+      .cta-banner h2 {
+        font-size: 1.7rem;
+      }
+
+      .coach-img img {
+        height: 320px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .logo {
+        font-size: 1.05rem;
+      }
+
+      .logo-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="logo">
+      <div class="logo-icon">🏏</div>
+      City Cricket <span>Academy</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#programs">Programs</a></li>
+        <li><a href="#coach">Coach</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="#enroll" class="btn-cta">Join Now</a>
+    <div class="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section class="hero" id="home">
+    <div class="hero-container">
+      <!-- Left Text -->
+      <div class="hero-text">
+        <div class="badge">
+          <span class="dot"></span> Now Enrolling — USA
+        </div>
+        <h1>Build Your <span>Cricket</span> Future in the USA</h1>
+        <p>
+          City Cricket Academy is proud to launch in the United States — training
+          young athletes with world-class coaching, led by a former
+          <strong style="color:#f5b301;">Bangladesh national cricketer</strong>.
+          From beginners to elite level, we turn passion into performance.
+        </p>
+
+        <div class="hero-stats">
+          <div class="stat">
+            <h3>10+</h3>
+            <p>Years Experience</p>
+          </div>
+          <div class="stat">
+            <h3>500+</h3>
+            <p>Players Trained</p>
+          </div>
+          <div class="stat">
+            <h3>100%</h3>
+            <p>Pro Coaching</p>
+          </div>
+        </div>
+
+        <div class="hero-buttons">
+          <a href="#enroll" class="btn-primary">Book Free Trial</a>
+          <a href="#programs" class="btn-outline">View Programs</a>
+        </div>
+      </div>
+
+      <!-- Right Form -->
+      <div class="form-card" id="enroll">
+        <h2>Get Your Free Trial Session</h2>
+        <p class="sub">Fill the form & our team will <strong>contact you within 24 hours</strong>.</p>
+
+        <form onsubmit="event.preventDefault(); alert('Thank you! Our team will contact you soon.');">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Full Name *</label>
+              <input type="text" placeholder="John Smith" required />
+            </div>
+            <div class="form-group">
+              <label>Age *</label>
+              <input type="number" placeholder="12" min="5" max="60" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Email *</label>
+              <input type="email" placeholder="john@email.com" required />
+            </div>
+            <div class="form-group">
+              <label>Phone *</label>
+              <input type="tel" placeholder="+1 234 567 8900" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>City / State *</label>
+            <input type="text" placeholder="e.g. Dallas, TX" required />
+          </div>
+
+          <div class="form-group">
+            <label>Playing Level *</label>
+            <select required>
+              <option value="">Select level</option>
+              <option>Beginner</option>
+              <option>Intermediate</option>
+              <option>Advanced</option>
+              <option>Professional</option>
+            </select>
+          </div>
+
+          <button type="submit" class="submit-btn">Claim Free Trial →</button>
+          <p class="form-note">🔒 Your info is safe. No spam. <span>Limited seats!</span></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FEATURES ===== -->
+  <section class="features" id="programs">
+    <h2>Why Choose <span>City Cricket Academy?</span></h2>
+    <p>World-class training programs designed for every age and skill level in the USA.</p>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🏏</div>
+        <h3>Pro Coaching</h3>
+        <p>Learn from a former Bangladesh national cricketer with international experience.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎯</div>
+        <h3>Skill Development</h3>
+        <p>Batting, bowling, fielding & fitness — structured training for real match performance.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🏆</div>
+        <h3>Tournaments</h3>
+        <p>Regular matches and exposure to competitive cricket leagues across the USA.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">👨‍👩‍👧</div>
+        <h3>All Ages</h3>
+        <p>Programs for kids, teens and adults — everyone is welcome to join the game.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== COACH SECTION ===== -->
+  <section class="coach" id="coach">
+    <div class="coach-container">
+      <div class="coach-img">
+        <img src="https://images.unsplash.com/photo-1624526267942-ab0ff8a3e972?auto=format&fit=crop&w=800&q=80" alt="Bangladesh Cricketer Coach" />
+        <div class="coach-tag">🇧🇩 Former Bangladesh Cricketer</div>
+      </div>
+
+      <div class="coach-text">
+        <h2>Learn From a <span>Bangladesh Cricket Legend</span></h2>
+        <p>
+          Our head coach is a former <strong>Bangladesh national team cricketer</strong>
+          with years of international and first-class experience. He brings real
+          match insight, discipline and elite training methods to young players
+          in the USA.
+        </p>
+
+        <ul class="coach-list">
+          <li><span class="check">✓</span> International playing experience</li>
+          <li><span class="check">✓</span> Personalized batting & bowling coaching</li>
+          <li><span class="check">✓</span> Fitness & mental conditioning</li>
+          <li><span class="check">✓</span> Pathway to US cricket leagues & colleges</li>
+        </ul>
+
+        <a href="#enroll" class="btn-primary">Train With Him →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA BANNER ===== -->
+  <section class="cta-banner" id="contact">
+    <h2>Ready to Start Your Cricket Journey?</h2>
+    <p>Limited seats available for the new USA batch. Book your free trial today!</p>
+    <a href="#enroll" class="btn-primary">Enroll Now — It's Free</a>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-icon">🏏</div>
+          City Cricket <span>Academy</span>
+        </div>
+        <p>
+          Building the next generation of cricket stars in the USA with
+          world-class coaching and a passion for the game.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#programs">Programs</a></li>
+          <li><a href="#coach">Our Coach</a></li>
+          <li><a href="#enroll">Free Trial</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@citycricketacademy.com">info@citycricketacademy.com</a></li>
+          <li><a href="tel:+1234567890">+1 234 567 8900</a></li>
+          <li><a href="#">USA — Multiple Locations</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      © 2025 City Cricket Academy, USA. All rights reserved. | Made with 🏏 for cricket lovers.
+    </div>
+  </footer>
+
+</body>
+</html>
