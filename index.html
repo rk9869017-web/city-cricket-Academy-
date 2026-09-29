@@ -392,6 +392,12 @@
       box-shadow: 0 14px 32px rgba(11, 138, 60, 0.55);
     }
 
+    .submit-btn:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
+
     .form-note {
       text-align: center;
       font-size: 0.75rem;
@@ -474,7 +480,7 @@
       line-height: 1.6;
     }
 
-    /* ===== COACH SECTION (UPDATED) ===== */
+    /* ===== COACH SECTION ===== */
     .coach {
       padding: 90px 6%;
       background: linear-gradient(135deg, var(--dark), #12233d);
@@ -962,37 +968,37 @@
         <h2>Get Your Free Trial Session</h2>
         <p class="sub">Fill the form & our team will <strong>contact you within 24 hours</strong>.</p>
 
-        <form onsubmit="event.preventDefault(); alert('Thank you! Our team will contact you soon.');">
+        <form id="cricket-form">
           <div class="form-row">
             <div class="form-group">
               <label>Full Name *</label>
-              <input type="text" placeholder="John Smith" required />
+              <input type="text" name="full_name" placeholder="John Smith" required />
             </div>
             <div class="form-group">
               <label>Age *</label>
-              <input type="number" placeholder="12" min="5" max="60" required />
+              <input type="number" name="age" placeholder="12" min="5" max="60" required />
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-group">
               <label>Email *</label>
-              <input type="email" placeholder="john@email.com" required />
+              <input type="email" name="email" placeholder="john@email.com" required />
             </div>
             <div class="form-group">
               <label>Phone *</label>
-              <input type="tel" placeholder="+1 234 567 8900" required />
+              <input type="tel" name="phone" placeholder="+1 234 567 8900" required />
             </div>
           </div>
 
           <div class="form-group">
             <label>City / State *</label>
-            <input type="text" placeholder="e.g. Dallas, TX" required />
+            <input type="text" name="city_state" placeholder="e.g. Dallas, TX" required />
           </div>
 
           <div class="form-group">
             <label>Playing Level *</label>
-            <select required>
+            <select name="playing_level" required>
               <option value="">Select level</option>
               <option>Beginner</option>
               <option>Intermediate</option>
@@ -1037,7 +1043,7 @@
     </div>
   </section>
 
-  <!-- ===== COACH SECTION (UPDATED — BANGLADESH LEGENDS) ===== -->
+  <!-- ===== COACH SECTION ===== -->
   <section class="coach" id="coach">
     <div class="coach-header">
       <h2>Learn From <span>Bangladesh Cricket Legends</span></h2>
@@ -1229,6 +1235,50 @@
       © 2025 City Cricket Academy, USA. All rights reserved. | Made with 🏏 for cricket lovers.
     </div>
   </footer>
+
+  <!-- ===== GOOGLE SHEETS CONNECTION SCRIPT ===== -->
+  <script>
+    const form = document.getElementById('cricket-form');
+    const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyPXka67pg16bpZ5Z34FI4tGEL1mOLDFm1L5309P-EdfmUnJly3KNYBmHts6Paf6Di5/exec';
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const btn = form.querySelector('.submit-btn');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = 'Submitting...';
+      btn.disabled = true;
+
+      const formData = new FormData(form);
+      const urlEncodedData = new URLSearchParams(formData).toString();
+
+      try {
+        const response = await fetch(WEB_APP_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: urlEncodedData
+        });
+
+        const result = await response.json();
+
+        if (result.result === 'success') {
+          alert('Thank you! Our team will contact you soon. 🏏');
+          form.reset();
+        } else {
+          alert('Something went wrong. Please try again.');
+          console.error(result.error);
+        }
+      } catch (error) {
+        console.error('Error!', error);
+        alert('Submission failed. Please check your connection.');
+      } finally {
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+      }
+    });
+  </script>
 
 </body>
 </html>
