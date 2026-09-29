@@ -474,94 +474,192 @@
       line-height: 1.6;
     }
 
-    /* ===== COACH SECTION ===== */
+    /* ===== COACH SECTION (UPDATED) ===== */
     .coach {
-      padding: 80px 6%;
+      padding: 90px 6%;
       background: linear-gradient(135deg, var(--dark), #12233d);
       color: var(--white);
     }
 
-    .coach-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 60px;
-      align-items: center;
+    .coach-header {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 60px;
     }
 
-    .coach-img {
-      position: relative;
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
-    }
-
-    .coach-img img {
-      width: 100%;
-      display: block;
-      height: 480px;
-      object-fit: cover;
-      transition: 0.5s;
-    }
-
-    .coach-img:hover img {
-      transform: scale(1.05);
-    }
-
-    .coach-tag {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      background: rgba(245, 179, 1, 0.95);
-      color: var(--dark);
-      padding: 10px 20px;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 0.85rem;
-    }
-
-    .coach-text h2 {
-      font-size: 2.4rem;
+    .coach-header h2 {
+      font-size: 2.6rem;
       font-weight: 800;
       line-height: 1.2;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
-    .coach-text h2 span {
+    .coach-header h2 span {
       color: var(--gold);
     }
 
-    .coach-text p {
+    .coach-header p {
       color: #c2d3c9;
+      font-size: 1.05rem;
       line-height: 1.8;
-      font-size: 1rem;
-      margin-bottom: 22px;
     }
 
-    .coach-list {
-      list-style: none;
-      margin-bottom: 30px;
+    .coach-header p strong {
+      color: var(--gold);
     }
 
-    .coach-list li {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 14px;
-      font-size: 0.95rem;
-      color: #d8e4dc;
-    }
-
-    .coach-list li .check {
-      width: 24px;
-      height: 24px;
-      background: var(--green);
-      border-radius: 50%;
+    .legend-grid {
+      max-width: 1200px;
+      margin: 0 auto;
       display: grid;
-      place-items: center;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+    }
+
+    .legend-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      overflow: hidden;
+      transition: 0.4s;
+      position: relative;
+      backdrop-filter: blur(6px);
+    }
+
+    .legend-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--gold);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .legend-img {
+      position: relative;
+      height: 340px;
+      overflow: hidden;
+    }
+
+    .legend-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      transition: 0.6s;
+    }
+
+    .legend-card:hover .legend-img img {
+      transform: scale(1.08);
+    }
+
+    .legend-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10, 22, 40, 0.95), transparent 60%);
+    }
+
+    .legend-flag {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: rgba(245, 179, 1, 0.95);
+      color: var(--dark);
+      padding: 6px 14px;
+      border-radius: 50px;
       font-size: 0.75rem;
-      flex-shrink: 0;
+      font-weight: 700;
+      z-index: 2;
+    }
+
+    .legend-name {
+      position: absolute;
+      bottom: 16px;
+      left: 20px;
+      right: 20px;
+      z-index: 2;
+    }
+
+    .legend-name h3 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .legend-name .role {
+      font-size: 0.82rem;
+      color: var(--gold);
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .legend-body {
+      padding: 24px 22px 26px;
+    }
+
+    .legend-bio {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: #c2d3c9;
+      margin-bottom: 20px;
+    }
+
+    .legend-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .legend-stat {
+      background: rgba(11, 138, 60, 0.15);
+      border: 1px solid rgba(11, 138, 60, 0.4);
+      border-radius: 12px;
+      padding: 10px 6px;
+      text-align: center;
+    }
+
+    .legend-stat h4 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--gold);
+      margin-bottom: 2px;
+    }
+
+    .legend-stat p {
+      font-size: 0.68rem;
+      color: #9fb3a6;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin: 0;
+    }
+
+    .legend-info {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .legend-info div {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+    }
+
+    .legend-info div span:first-child {
+      color: #8fa89a;
+    }
+
+    .legend-info div span:last-child {
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    .coach-cta {
+      text-align: center;
+      margin-top: 60px;
     }
 
     /* ===== CTA BANNER ===== */
@@ -680,12 +778,8 @@
       .hero-text h1 {
         font-size: 2.8rem;
       }
-      .coach-container {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-      .coach-img img {
-        height: 400px;
+      .legend-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       }
     }
 
@@ -718,6 +812,10 @@
 
       .footer-grid {
         grid-template-columns: 1fr 1fr;
+      }
+
+      .coach-header h2 {
+        font-size: 2rem;
       }
     }
 
@@ -761,13 +859,24 @@
       }
 
       .features h2,
-      .coach-text h2,
       .cta-banner h2 {
         font-size: 1.7rem;
       }
 
-      .coach-img img {
-        height: 320px;
+      .coach {
+        padding: 70px 5%;
+      }
+
+      .coach-header h2 {
+        font-size: 1.7rem;
+      }
+
+      .coach-header p {
+        font-size: 0.95rem;
+      }
+
+      .legend-img {
+        height: 300px;
       }
 
       .footer-grid {
@@ -928,32 +1037,153 @@
     </div>
   </section>
 
-  <!-- ===== COACH SECTION ===== -->
+  <!-- ===== COACH SECTION (UPDATED — BANGLADESH LEGENDS) ===== -->
   <section class="coach" id="coach">
-    <div class="coach-container">
-      <div class="coach-img">
-        <img src="https://images.unsplash.com/photo-1624526267942-ab0ff8a3e972?auto=format&fit=crop&w=800&q=80" alt="Bangladesh Cricketer Coach" />
-        <div class="coach-tag">🇧🇩 Former Bangladesh Cricketer</div>
+    <div class="coach-header">
+      <h2>Learn From <span>Bangladesh Cricket Legends</span></h2>
+      <p>
+        Train under the guidance of <strong>former Bangladesh national team cricketers</strong> —
+        legends who have represented their country at the highest level. Learn
+        batting, bowling, fielding and match-winning mindset directly from
+        international icons.
+      </p>
+    </div>
+
+    <div class="legend-grid">
+
+      <!-- Shakib Al Hasan -->
+      <div class="legend-card">
+        <div class="legend-img">
+          <span class="legend-flag">🇧🇩 Bangladesh</span>
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Shakib_Al_Hasan_%28cropped%29.jpg/480px-Shakib_Al_Hasan_%28cropped%29.jpg"
+            alt="Shakib Al Hasan"
+            onerror="this.src='https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=600&q=80'"
+          />
+          <div class="legend-name">
+            <h3>Shakib Al Hasan</h3>
+            <div class="role">All-Rounder • Former Captain</div>
+          </div>
+        </div>
+        <div class="legend-body">
+          <p class="legend-bio">
+            One of the greatest all-rounders in cricket history. Former Bangladesh
+            captain and the only cricketer to top the ICC rankings in all three
+            formats simultaneously. A true match-winner with bat and ball.
+          </p>
+          <div class="legend-stats">
+            <div class="legend-stat">
+              <h4>14,000+</h4>
+              <p>Runs</p>
+            </div>
+            <div class="legend-stat">
+              <h4>700+</h4>
+              <p>Wickets</p>
+            </div>
+            <div class="legend-stat">
+              <h4>400+</h4>
+              <p>Matches</p>
+            </div>
+          </div>
+          <div class="legend-info">
+            <div><span>Born</span><span>24 March 1987</span></div>
+            <div><span>Role</span><span>All-Rounder</span></div>
+            <div><span>Batting</span><span>Left-handed</span></div>
+            <div><span>Bowling</span><span>Slow left-arm orthodox</span></div>
+          </div>
+        </div>
       </div>
 
-      <div class="coach-text">
-        <h2>Learn From a <span>Bangladesh Cricket Legend</span></h2>
-        <p>
-          Our head coach is a former <strong>Bangladesh national team cricketer</strong>
-          with years of international and first-class experience. He brings real
-          match insight, discipline and elite training methods to young players
-          in the USA.
-        </p>
-
-        <ul class="coach-list">
-          <li><span class="check">✓</span> International playing experience</li>
-          <li><span class="check">✓</span> Personalized batting & bowling coaching</li>
-          <li><span class="check">✓</span> Fitness & mental conditioning</li>
-          <li><span class="check">✓</span> Pathway to US cricket leagues & colleges</li>
-        </ul>
-
-        <a href="#enroll" class="btn-primary">Train With Him →</a>
+      <!-- Tamim Iqbal -->
+      <div class="legend-card">
+        <div class="legend-img">
+          <span class="legend-flag">🇧🇩 Bangladesh</span>
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Tamim_Iqbal_%28cropped%29.jpg/480px-Tamim_Iqbal_%28cropped%29.jpg"
+            alt="Tamim Iqbal"
+            onerror="this.src='https://images.unsplash.com/photo-1624526267942-ab0ff8a3e972?auto=format&fit=crop&w=600&q=80'"
+          />
+          <div class="legend-name">
+            <h3>Tamim Iqbal</h3>
+            <div class="role">Opening Batter • Former Captain</div>
+          </div>
+        </div>
+        <div class="legend-body">
+          <p class="legend-bio">
+            Bangladesh's most prolific opening batter and one of the finest
+            left-handers of his generation. Former ODI captain known for his
+            aggressive strokeplay and record-breaking centuries.
+          </p>
+          <div class="legend-stats">
+            <div class="legend-stat">
+              <h4>15,000+</h4>
+              <p>Runs</p>
+            </div>
+            <div class="legend-stat">
+              <h4>25+</h4>
+              <p>Centuries</p>
+            </div>
+            <div class="legend-stat">
+              <h4>390+</h4>
+              <p>Matches</p>
+            </div>
+          </div>
+          <div class="legend-info">
+            <div><span>Born</span><span>20 March 1989</span></div>
+            <div><span>Role</span><span>Opening Batter</span></div>
+            <div><span>Batting</span><span>Left-handed</span></div>
+            <div><span>Style</span><span>Aggressive Opener</span></div>
+          </div>
+        </div>
       </div>
+
+      <!-- Mushfiqur Rahim -->
+      <div class="legend-card">
+        <div class="legend-img">
+          <span class="legend-flag">🇧🇩 Bangladesh</span>
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Mushfiqur_Rahim_%28cropped%29.jpg/480px-Mushfiqur_Rahim_%28cropped%29.jpg"
+            alt="Mushfiqur Rahim"
+            onerror="this.src='https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&w=600&q=80'"
+          />
+          <div class="legend-name">
+            <h3>Mushfiqur Rahim</h3>
+            <div class="role">Wicket-Keeper Batter • Former Captain</div>
+          </div>
+        </div>
+        <div class="legend-body">
+          <p class="legend-bio">
+            Bangladesh's most reliable wicket-keeper batter and a former captain.
+            Known for his gritty innings under pressure and the first Bangladeshi
+            to score a double century in Test cricket.
+          </p>
+          <div class="legend-stats">
+            <div class="legend-stat">
+              <h4>14,000+</h4>
+              <p>Runs</p>
+            </div>
+            <div class="legend-stat">
+              <h4>300+</h4>
+              <p>Catches</p>
+            </div>
+            <div class="legend-stat">
+              <h4>400+</h4>
+              <p>Matches</p>
+            </div>
+          </div>
+          <div class="legend-info">
+            <div><span>Born</span><span>1 September 1987</span></div>
+            <div><span>Role</span><span>WK-Batter</span></div>
+            <div><span>Batting</span><span>Right-handed</span></div>
+            <div><span>Specialty</span><span>Test Double Centurion</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="coach-cta">
+      <a href="#enroll" class="btn-primary">Train With Legends →</a>
     </div>
   </section>
 
