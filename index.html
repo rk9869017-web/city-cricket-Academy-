@@ -1435,7 +1435,7 @@
   <!-- ===== GOOGLE SHEETS CONNECTION SCRIPT ===== -->
   <script>
     const form = document.getElementById('cricket-form');
-    const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyPXka67pg16bpZ5Z34FI4tGEL1mOLDFm1L5309P-EdfmUnJly3KNYBmHts6Paf6Di5/exec';
+    const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwOdzQ0Ns9Lwa-r8XsQW_5f47pmzBomX0TfNWq_QdC2WCtnQsU49sk_PgOq7RjOvV7U/exec';
 
     // Modal elements
     const modal = document.getElementById('thankyouModal');
@@ -1491,7 +1491,8 @@
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
           },
-          body: urlEncodedData
+          body: urlEncodedData,
+          redirect: 'follow'
         });
 
         const result = await response.json();
